@@ -1,0 +1,26 @@
+// plugins
+// @use "bootstrap/scss/bootstrap" as *;
+
+
+// abstracts
+@use 'abstracts/mixins.scss';
+@use 'abstracts/variables.scss';
+
+
+// base
+@use "base/typography.scss";
+
+
+// components
+@use "components/buttons.scss";
+
+
+// layout
+@use "layout/common.scss";
+@use "layout/footer.scss";
+@use "layout/header.scss";
+
+
+// vendors
+@use "vendors/icomoon/icomoon.scss";
+// @use "./vendors/icomoon/variables.scss";
