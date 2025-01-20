@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the variables of the site
+// -----------------------------------------------------------------------------
+
+// Colors
+$black: #000;
+$white: #fff;
+
+// Primary colors
+$primary: $black;
+$secondary: $white;
+
+// HTML bg color
+$body-bg: $secondary;
+$body-color: $primary;
+
+// Fonts
+$font-family-primary: 'Poppins', serif;
+$base-font-path: '../fonts';
+$base-font-size: 16px;
+$rem-base: 10px;
+
+// Fonts weight
+$font-weight-thin: 100;
+$font-weight-ulight: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-heavy: 800;
+$font-weight-black: 900;
+
+// Link reset
+$link-color: $secondary;
+$link-decoration: none;
+
+// Border radius
+$rounded-circle: 50%;
+
+// Transition
+$animation-speed: 0.3s;
+$transition-duration-base: ease;

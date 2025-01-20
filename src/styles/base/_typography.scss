@@ -1,0 +1,24 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the typography of the site
+// -----------------------------------------------------------------------------
+
+html {
+  font-size: $rem-base;
+}
+
+body {
+  font-weight: $font-weight-normal;
+}
+
+a {
+  @include transition(color);
+  color: $link-color;
+  text-decoration: $link-decoration;
+}
+
+ul,
+ol,
+dl,
+p {
+  margin: 0;
+}

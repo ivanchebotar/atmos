@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { ProvidePlugin } = require('webpack');
 
 module.exports = {
   entry: './src/js/main.js',
@@ -22,27 +23,27 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, // Extract CSS into a separate file
-          'css-loader', // Loads CSS into JavaScript
+          MiniCssExtractPlugin.loader,
+          'css-loader',
         ],
       },
       // Handle SCSS files
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, // Extract CSS to a separate file
-          'css-loader', // Loads CSS
-          'sass-loader', // Compiles SCSS to CSS
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
         ],
       },
       // Handle JS files
       {
-        test: /\.js$/, // Matches JavaScript files
-        exclude: /node_modules/, // Excludes node_modules for performance
+        test: /\.js$/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"], // Transpile ES6+ to ES5
+            presets: ["@babel/preset-env"],
           },
         },
       },
@@ -51,7 +52,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/images/[name][ext][query]', // Save images in 'assets/images/'
+          filename: 'assets/images/[name][ext][query]',
         },
         use: [
           {
@@ -59,16 +60,16 @@ module.exports = {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 75, // Adjust quality for JPEGs
+                quality: 75,
               },
               pngquant: {
-                quality: [0.65, 0.90], // Adjust quality range for PNGs
-                speed: 4, // Speed of optimization
+                quality: [0.65, 0.90],
+                speed: 4,
               },
               gifsicle: {
-                interlaced: false, // Optimize GIFs
+                interlaced: false,
               },
-              webp: false, // Disable WebP conversion
+              webp: false,
             },
           },
         ],
@@ -78,7 +79,7 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/fonts/[name][ext][query]', // Save fonts in 'assets/fonts/'
+          filename: 'assets/fonts/[name][ext][query]',
         },
       },
       // Load and copy videos (mp4)
@@ -86,7 +87,7 @@ module.exports = {
         test: /\.mp4$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/videos/[name][ext][query]', // Save videos in 'assets/videos/'
+          filename: 'assets/videos/[name][ext][query]',
         },
       },
     ],
@@ -96,17 +97,21 @@ module.exports = {
     minimizer: [
       new TerserPlugin(),
       new CssMinimizerPlugin(),
-    ],
+    ]
   },
   plugins: [
-    new CleanWebpackPlugin(), // Clean up the dist folder before each build
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/views/index.html', // Use the template for the HTML file
-      inject: true, // Inject JS and CSS into the HTML file
+      template: './src/views/index.html',
+      inject: true,
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.css', // Extract CSS to a separate file
+      filename: 'style.css',
     }),
+    new ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    })
   ],
   devServer: {
     static: {

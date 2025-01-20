@@ -1,26 +1,24 @@
-// plugins
-// @use "bootstrap/scss/bootstrap" as *;
+// 1. Abstracts
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
 
 
-// abstracts
-@use 'abstracts/mixins.scss';
-@use 'abstracts/variables.scss';
+// 2. Base
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/typography';
 
 
-// base
-@use "base/typography.scss";
+// 3. Components
+@import 'components/buttons';
 
 
-// components
-@use "components/buttons.scss";
+// 4. Layout
+@import 'layout/common';
+@import 'layout/footer';
+@import 'layout/header';
 
 
-// layout
-@use "layout/common.scss";
-@use "layout/footer.scss";
-@use "layout/header.scss";
-
-
-// vendors
-@use "vendors/icomoon/icomoon.scss";
-// @use "./vendors/icomoon/variables.scss";
+// 5. Vendors
+@import 'vendors/icomoon/icomoon';

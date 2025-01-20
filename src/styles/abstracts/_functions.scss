@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the functions of the site
+// -----------------------------------------------------------------------------
+
+// Convert to rem
+@function convert-to-rem($value, $base-value: $rem-base) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0) {
+    $value: 0;
+  } // Turn 0rem into 0
+  @return $value;
+}
+
+@function rem($px-size) {
+  @return $px-size / $base-font-size * 1rem;
+}

@@ -1,0 +1,46 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the base of the site
+// -----------------------------------------------------------------------------
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $body-bg;
+  font-family: $font-family-primary;
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+}
+
+button, 
+select, 
+input, 
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+.list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

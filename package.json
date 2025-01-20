@@ -15,7 +15,6 @@
     "@babel/preset-env": "^7.26.0",
     "autoprefixer": "^10.4.20",
     "babel-loader": "^9.2.1",
-    "bootstrap": "^5.3.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
@@ -28,7 +27,7 @@
     "mini-css-extract-plugin": "^2.9.2",
     "postcss-loader": "^8.1.1",
     "sass": "^1.83.4",
-    "sass-loader": "^16.0.4",
+    "sass-loader": "^10.1.0",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.11",
     "webpack": "^5.97.1",
@@ -36,7 +35,9 @@
     "webpack-dev-server": "^5.2.0"
   },
   "dependencies": {
+    "custom-event-polyfill": "^1.0.7",
     "image-webpack-loader": "^8.1.0",
+    "jquery": "^3.7.1",
     "sharp": "^0.33.5"
   }
 }

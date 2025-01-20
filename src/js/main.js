@@ -1,13 +1,13 @@
 // CSS imports
 import '../styles/style.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 // JS imports
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import $ from 'jquery';
+import ready, { HTML } from './utils';
+import { initMobileNav } from './components/initMobileNav';
 
+ready(() => {
+  HTML.classList.add('is-loaded');
 
-const greet = () => {
-  console.log("Hello, Babel!");
-};
-
-greet();
+  initMobileNav();
+});
