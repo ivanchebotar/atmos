@@ -1,0 +1,61 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the loader of the site
+// -----------------------------------------------------------------------------
+
+.loader {
+  @include transition(opacity);
+  width: 100%;
+  height: 100%;
+  background-color: $grey-01;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__spinner {
+    width: rem(48px);
+    height: rem(48px);
+    border: rem(3px) solid $secondary;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    &:after {
+      content: '';  
+      box-sizing: border-box;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: $primary;
+      width: rem(16px);
+      height: rem(16px);
+      transform: translate(-50%, 50%);
+      border-radius: 50%;
+    }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,6 +1,7 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the mixins of the site
 // -----------------------------------------------------------------------------
+@use 'sass:list';
 
 // breakpoint mixins
 $breakpoints: (
@@ -47,7 +48,7 @@ $breakpoints: (
   $list: ();
   @each $prop in $properties {
     $str: #{$prop} #{$duration} #{$easing};
-    $list: join($list, #{$str}, comma);
+    $list: list.join($list, #{$str}, comma);
   }
   transition: $list;
 }
@@ -60,3 +61,10 @@ $breakpoints: (
 }
 // usage
 // @include grid(4, 2rem);
+
+// list reset
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

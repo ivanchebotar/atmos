@@ -12,12 +12,14 @@
 
 // 3. Components
 @import 'components/buttons';
+@import 'components/loader';
+@import 'components/menu';
+@import 'components/search';
+@import 'components/sections';
 
 
 // 4. Layout
 @import 'layout/common';
-@import 'layout/footer';
-@import 'layout/header';
 
 
 // 5. Vendors

@@ -1,0 +1,58 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the menu component of the site
+// -----------------------------------------------------------------------------
+
+.logo {
+  width: rem(50px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: rem(80px);
+}
+
+.menu {
+  width: rem(100px);
+  background-color: $primary;
+  padding: rem(20px);
+  margin-left: rem(5px);
+  margin-right: rem(5px);
+  border-radius: rem(10px);
+}
+
+.menu-list {
+  @include list-reset;
+
+  &__elem {
+    @include transition(background-color);
+    color: $secondary;
+    font-weight: $font-weight-normal;
+    padding-top: rem(10px);
+    padding-bottom: rem(10px);
+    margin-bottom: rem(10px);
+    text-align: center;
+    font-size: rem(12px);
+    border-radius: rem(10px);
+    cursor: pointer;
+
+    &:hover {
+      color: $active-link;
+      background-color: rgba($yellow-01, 0.3);
+
+      a {
+        color: $secondary;
+      }
+    }
+
+    &.active {
+      background-color: rgba($yellow-01, 0.3);
+    }
+  }
+
+  &__elem-icon {
+    font-size: rem(20px);
+  
+    &.icon-settings,
+    &.icon-location {
+      font-size: rem(17px);
+    }
+  }
+}

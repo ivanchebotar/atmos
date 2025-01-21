@@ -3,11 +3,16 @@
 // -----------------------------------------------------------------------------
 
 // Colors
+$grey-01: #ebe9e1;
+$yellow-01: #efb11d;
+$red-01: #e43d12;
+$pink-01: #ffa2b6;
+
 $black: #000;
 $white: #fff;
 
 // Primary colors
-$primary: $black;
+$primary: $red-01;
 $secondary: $white;
 
 // HTML bg color
@@ -16,9 +21,9 @@ $body-color: $primary;
 
 // Fonts
 $font-family-primary: 'Poppins', serif;
-$base-font-path: '../fonts';
+$base-font-path: '../assets/fonts';
 $base-font-size: 16px;
-$rem-base: 10px;
+$rem-base: 16px;
 
 // Fonts weight
 $font-weight-thin: 100;
@@ -34,6 +39,7 @@ $font-weight-black: 900;
 // Link reset
 $link-color: $secondary;
 $link-decoration: none;
+$active-link: $pink-01;
 
 // Border radius
 $rounded-circle: 50%;

@@ -20,14 +20,61 @@
 
 <body>
   <div class="wrapper">
-    <header></header>
     <div class="page-holder">
+      <aside class="menu">
+        <div class="logo">
+          <a href="index.html">
+            <img src="../assets/images/logo.svg" alt="Atmos - logo">
+          </a>
+        </div>
+        <nav>
+          <ul class="menu-list">
+            <li class="menu-list__elem" data-page="weather">
+              <a href="#weather">
+                <span class="menu-list__elem-icon icon-cloud"></span>
+                weather
+              </a>
+            </li>
+            <li class="menu-list__elem" data-page="location">
+              <a href="#location">
+                <span class="menu-list__elem-icon icon-location"></span>
+                location
+              </a>
+            </li>
+            <li class="menu-list__elem" data-page="settings">
+              <a href="#settings">
+                <span class="menu-list__elem-icon icon-settings"></span>
+                settings
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    
       <main class="main">
-        <h1>Welcome to my Webpack project!</h1>
-        <video src="../assets//videos/hero-video.mp4"></video>
+        <div class="loader">
+          <div class="loader__spinner"></div>
+        </div>
+        <section id="weather" class="weather-section">
+          <div class="serch-block">
+            <input class="search-block__input" type="search" id="search-field" placeholder="Search for a location" />
+            <ul class="search-block__list" id="search-results"></ul>
+          </div>
+          <div class="weather" id="weather-info"></div>
+        </section>
+        <section id="location" class="location-section">
+          <div class="container">
+            location
+          </div>
+        </section>
+        <section id="settings" class="settings-section">
+          <div class="container">
+            settings
+          </div>
+        </section>
       </main>
     </div>
-    <footer></footer>
   </div>
 </body>
 
