@@ -12,7 +12,7 @@ input[type="search"] {
   color: $secondary;
   width: rem(400px);
   line-height: 1.6;
-  margin-bottom: rem(10px);
+  margin-bottom: rem(20px);
 
   &::placeholder {
     color: rgba($secondary, 0.6);
@@ -26,14 +26,26 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
+.search-block {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 .search-block__list {
   @include list-reset;
   border-radius: rem(10px);
   overflow: hidden;
+  position: absolute;
+  top: rem(56px);
+  left: 0;
+  right: 0;
 
   li {
     background-color: rgba($black, 0.4);
     padding: rem(10px);
     color: $secondary;
+    cursor: pointer;
   }
 }

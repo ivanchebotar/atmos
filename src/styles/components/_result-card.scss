@@ -1,0 +1,11 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the result-card component of the site
+// -----------------------------------------------------------------------------
+
+.weather {
+  &__img {
+    span {
+      font-size: rem(140px);
+    }
+  }
+}
