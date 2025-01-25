@@ -49,7 +49,7 @@ module.exports = {
       },
       // Load and optimize images (PNG, JPG, GIF)
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/images/[name][ext][query]',

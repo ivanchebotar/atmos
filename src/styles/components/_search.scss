@@ -10,9 +10,9 @@ input[type="search"] {
   border-radius: rem(10px);
   font-size: rem(16px);
   color: $secondary;
-  width: rem(400px);
+  width: 100%;
   line-height: 1.6;
-  margin-bottom: rem(20px);
+  margin-bottom: rem(80px);
 
   &::placeholder {
     color: rgba($secondary, 0.6);
@@ -28,6 +28,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .search-block {
   display: inline-block;
+  width: 70%;
   position: relative;
   top: 0;
   left: 0;
@@ -41,11 +42,17 @@ input[type="search"]::-webkit-search-results-decoration {
   top: rem(56px);
   left: 0;
   right: 0;
+  background-color: rgba($primary, 0.4);
+  backdrop-filter: blur(15px);
 
   li {
-    background-color: rgba($black, 0.4);
-    padding: rem(10px);
+    @include transition(background-color);
+    padding: rem(10px) rem(14px);
     color: $secondary;
     cursor: pointer;
+
+    &:hover {
+      background-color: rgba($primary, 0.6);
+    }
   }
 }
