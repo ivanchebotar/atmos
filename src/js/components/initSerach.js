@@ -68,7 +68,7 @@ export default function initSearch () {
     const date = new Date(dateString);
     const today = new Date();
   
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   
     // Если дата — это сегодняшний день
     if (date.toDateString() === today.toDateString()) {
@@ -79,7 +79,7 @@ export default function initSearch () {
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
     if (date.toDateString() === tomorrow.toDateString()) {
-      return 'Tomorrow';
+      return 'Tomrrow';
     }
   
     // Возвращаем название дня недели
@@ -130,7 +130,7 @@ export default function initSearch () {
       const sunrise = forecast.sunrise[0];
       const sunset = forecast.sunset[0];
   
-      let forecastHTML = '<div class="card card--strip bg--primary"><h4>7-Day Forecast</h4><ul>';
+      let forecastHTML = '<div class="card card--strip bg--primary"><h3>7-Day Forecast</h3><ul>';
       for (let i = 0; i < 7; i++) {
         const date = forecast.time[i];
         const minTemp = forecast.temperature_2m_min[i];
@@ -146,28 +146,27 @@ export default function initSearch () {
       }
       forecastHTML += '</ul></div>';
 
-      let hourlyHTML = '<div class="card bg--primary"><h4>24-Hour Forecast</h4>';
+      let hourlyHTML = '<div class="card card--grid card--grid-alt bg--primary"><h3>24-Hour Forecast</h3><ul class="card__content card__content--alt">';
       const hourlyData = weatherData.hourly;
 
-      for (let i = 0; i < 6; i++) { // Прогноз на 24 часа
+      for (let i = 0; i < 6; i++) {
         const time = hourlyData.time[i];
         const temperature = hourlyData.temperature_2m[i];
         const iconCode = hourlyData.weathercode[i];
         const icon = weatherIcons[iconCode] || '❓';
 
         hourlyHTML += `
-          <div class="hourly-forecast">
+          <li>
             <p>${time.split('T')[1]}</p>
             <img src="${icon}" alt="Weather icon" />
             <p>${temperature}°</p>
-          </div>`;
+          </li>`;
       }
+      hourlyHTML += '</ul></div>';
 
-      hourlyHTML += '</div>';
-  
       weatherInfo.innerHTML = `
-        <div class="card">
-          <div class="card__header">
+        <div class="cards-holder">
+          <div class="card card--flex">
             <div class="card__header-description">
               <h1 class="card__header-title">${cityName}</h1>
               <h2 class="card__header-txt">${currentWeather.temperature}°</h2>
@@ -177,9 +176,9 @@ export default function initSearch () {
             </div>
           </div>
           ${hourlyHTML}
-          <div class="card__description bg--primary">
-            <h4>Air condition</h4>
-            <ul>
+          <div class="card card--grid bg--primary">
+            <h3>Air condition</h3>
+            <ul class="card__content">
               <li><p class="card__description-txt">humidity <strong>${humidity}%</strong></p></li>
               <li><p class="card__description-txt">uv <strong>${uvIndex}</strong></p></li>
               <li><p class="card__description-txt">sunrise <strong>${sunrise.split("T")[1]}</strong></p></li>
@@ -189,7 +188,7 @@ export default function initSearch () {
             </ul>
           </div>
         </div>
-          ${forecastHTML}
+        ${forecastHTML}
       `;
     } catch (error) {
       console.error("Error displaying weather data:", error);

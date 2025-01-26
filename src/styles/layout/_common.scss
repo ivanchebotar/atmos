@@ -2,12 +2,15 @@
 // This file contains all styles related to the common layout of the site
 // -----------------------------------------------------------------------------
 .page-holder {
-  display: flex;
-  justify-content: space-between;
-  margin-left: rem(-5px);
-  margin-right: rem(-5px);
-  min-height: 100vh;
   background-color: $white;
-  overflow: hidden;
   padding: rem(10px);
+  
+  @include media(">=tablet") {
+    display: flex;
+    justify-content: space-between;
+    margin-left: rem(-5px);
+    margin-right: rem(-5px);
+    min-height: 100vh;
+    overflow: hidden;
+  }
 }

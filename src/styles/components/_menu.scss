@@ -3,19 +3,43 @@
 // -----------------------------------------------------------------------------
 
 .logo {
-  width: rem(50px);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: rem(80px);
+  width: rem(40px);
+  
+  @include media(">=tablet") {
+    width: rem(50px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: rem(80px);
+  }
 }
 
 .menu {
-  width: rem(100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: $primary;
-  padding: rem(20px);
-  margin-left: rem(5px);
-  margin-right: rem(5px);
+  padding: rem(10px);
+  margin-bottom: rem(10px);
   border-radius: rem(10px);
+  position: relative;
+  top: 0;
+  left: 0;
+  
+  @include media(">=tablet") {
+    display: block;
+    margin-left: rem(5px);
+    margin-right: rem(5px);
+    margin-bottom: 0;
+    width: rem(100px);
+    padding: rem(20px);
+  }
+
+  nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .menu-list {
@@ -31,6 +55,7 @@
     text-align: center;
     font-size: rem(12px);
     border-radius: rem(10px);
+    width: rem(60.5px);
     cursor: pointer;
 
     &:hover {

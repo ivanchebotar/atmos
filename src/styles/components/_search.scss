@@ -12,7 +12,11 @@ input[type="search"] {
   color: $secondary;
   width: 100%;
   line-height: 1.6;
-  margin-bottom: rem(80px);
+  margin-bottom: rem(40px);
+  
+  @include media(">=desktop") {
+    margin-bottom: rem(80px);
+  }
 
   &::placeholder {
     color: rgba($secondary, 0.6);
@@ -28,10 +32,14 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .search-block {
   display: inline-block;
-  width: 70%;
   position: relative;
+  width: 100%;
   top: 0;
   left: 0;
+  
+  @include media(">=desktop") {
+    width: 70%;
+  }
 }
 
 .search-block__list {
