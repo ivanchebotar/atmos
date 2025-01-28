@@ -21,12 +21,17 @@
 <body>
   <div class="wrapper">
     <div class="page-holder">
+      
       <aside class="menu">
         <div class="logo">
           <a href="index.html">
             <img src="../assets/images/logo.svg" alt="Atmos - logo">
           </a>
         </div>
+        <div class="menu__opener active">
+          <a href="#"></a>
+        </div>
+        <div class="menu__close"></div>
         <nav>
           <ul class="menu-list">
             <li class="menu-list__elem" data-page="weather">
@@ -38,7 +43,7 @@
             <li class="menu-list__elem" data-page="location">
               <a href="#location">
                 <span class="menu-list__elem-icon icon-location"></span>
-                location
+                cities
               </a>
             </li>
             <li class="menu-list__elem" data-page="settings">
@@ -52,10 +57,7 @@
       </aside>
 
     
-      <main class="main">
-        <div class="loader">
-          <div class="loader__spinner"></div>
-        </div>
+      <main class="main" id="main">
         <section id="weather" class="weather-section">
           <div class="search-block">
             <input class="search-block__input" type="search" id="search-field" placeholder="Search for a location" />
@@ -64,8 +66,47 @@
           <div class="cards-wrap cards-wrap--flex" id="weather-info"></div>
         </section>
         <section id="location" class="location-section">
-          <div class="container">
-            location
+          <div class="cards-wrap">
+            <a href="#" class="card">
+              <h2 class="card__title">New York City</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">London</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Paris</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Tokyo</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Singapore</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Rome</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Madrid</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Barcelona</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Berlin</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
+            <a href="#" class="card">
+              <h2 class="card__title">Sydney</h2>
+              <img class="card__img" src="../assets/images/apple-touch-icon.png" alt="City-icon">
+            </a>
           </div>
         </section>
         <section id="settings" class="settings-section">
@@ -74,6 +115,8 @@
           </div>
         </section>
       </main>
+
+
     </div>
   </div>
 </body>

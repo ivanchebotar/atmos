@@ -1,7 +1,10 @@
+import { initLoader } from './initLoader';
+
 export default function initTabs() {
   const tabs = document.querySelectorAll('.menu-list__elem');
-  const loader = document.querySelector('.loader');
   const contents = document.querySelectorAll('section');
+  const body = document.querySelector('body');
+  const { showLoader, hideLoader } = initLoader();
 
   function showContent(tabId) {
     contents.forEach(content => {
@@ -17,9 +20,11 @@ export default function initTabs() {
   }
 
   function loadTabContent(tabId) {
-    loader.classList.add('visible');
+    showLoader();
+    body.classList.add('loader-visible');
     setTimeout(() => {
-      loader.classList.remove('visible');
+      hideLoader();
+      body.classList.remove('loader-visible');
       showContent(tabId);
     }, 1000);
   }

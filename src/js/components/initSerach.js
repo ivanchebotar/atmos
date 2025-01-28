@@ -1,90 +1,16 @@
-import icon0 from '../../assets/images/icon-00.svg';
-import icon1 from '../../assets/images/icon-01.svg';
-import icon2 from '../../assets/images/icon-02.svg';
-import icon3 from '../../assets/images/icon-03.svg';
-import icon45 from '../../assets/images/icon-45.svg';
-import icon48 from '../../assets/images/icon-48.svg';
-import icon53 from '../../assets/images/icon-53.svg';
-import icon55 from '../../assets/images/icon-55.svg';
-import icon56 from '../../assets/images/icon-56.svg';
-import icon61 from '../../assets/images/icon-61.svg';
-import icon65 from '../../assets/images/icon-65.svg';
-import icon71 from '../../assets/images/icon-71.svg';
-import icon73 from '../../assets/images/icon-73.svg';
-import icon75 from '../../assets/images/icon-75.svg';
-import icon95 from '../../assets/images/icon-95.svg';
+import { API_BASE_URL, GEOCODING_URL, REVERSE_GEOCODING_URL, DEFAULT_LOCATION } from "./../configs/origins";
+import { weatherIcons } from "./../configs/icons";
+import { createForecastHTML } from "../snippets/forecastTemplate";
+import { createHourlyHTML } from "../snippets/hourlyTemplate";
+// import { renderSearchResults } from "../plugins/serachResult";
+import { initLoader } from './initLoader';
 
 
 export default function initSearch () {
-
-  const DEFAULT_LOCATION = {
-    name: "New York City",
-    lat: 40.7128,
-    lon: -74.0060,
-  };
-  
-  const weatherIcons = {
-    0: icon0, // Clear sky
-    1: icon1, // Mainly clear
-    2: icon2, // Partly cloudy
-    3: icon3, // Overcast
-    45: icon45, // Fog
-    48: icon48, // Depositing rime fog
-    51: icon48, // Drizzle
-    53: icon53, // Light rain
-    55: icon55, // Moderate rain
-    56: icon56, // Freezing drizzle
-    57: icon56, // Freezing rain
-    61: icon61, // Showers of rain
-    63: icon61, // Heavy showers of rain
-    65: icon65, // Thunderstorms
-    66: icon65, // Freezing thunderstorms
-    67: icon65, // Heavy freezing thunderstorms
-    71: icon71, // Snow
-    73: icon73, // Light snow showers
-    75: icon75, // Moderate snow showers
-    77: icon75, // Snow grains
-    80: icon75, // Showers of snow
-    81: icon75, // Heavy snow showers
-    82: icon75, // Snow storms
-    85: icon75, // Ice pellets
-    86: icon75, // Heavy ice pellets
-    95: icon95, // Thunderstorms with light rain
-    96: icon95, // Thunderstorms with heavy rain
-    99: icon95, // Thunderstorms with hail
-  };
-  
-  
   const searchInput = document.getElementById('search-field');
   const searchResults = document.getElementById('search-results');
   const weatherInfo = document.getElementById('weather-info');
-  
-  const API_BASE_URL = 'https://api.open-meteo.com/v1/forecast';
-  const GEOCODING_URL = 'https://nominatim.openstreetmap.org/search';
-  const REVERSE_GEOCODING_URL = 'https://nominatim.openstreetmap.org/reverse';
-
-  // Date format
-  function formatDateToDay(dateString) {
-    const date = new Date(dateString);
-    const today = new Date();
-  
-    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  
-    // Если дата — это сегодняшний день
-    if (date.toDateString() === today.toDateString()) {
-      return 'Today';
-    }
-  
-    // Если дата — завтрашний день
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
-    if (date.toDateString() === tomorrow.toDateString()) {
-      return 'Tomrrow';
-    }
-  
-    // Возвращаем название дня недели
-    return dayNames[date.getDay()];
-  }
+  const { showLoader, hideLoader } = initLoader();
   
   // Fetch city name by coordinates
   async function fetchCityName(lat, lon) {
@@ -115,6 +41,7 @@ export default function initSearch () {
   
   // Display weather information
   async function displayWeatherByCoordinates(lat, lon) {
+    showLoader();
     try {
       const cityName = await fetchCityName(lat, lon);
       const weatherData = await fetchWeather(lat, lon);
@@ -129,40 +56,9 @@ export default function initSearch () {
       const uvIndex = weatherData.hourly.uv_index[0];
       const sunrise = forecast.sunrise[0];
       const sunset = forecast.sunset[0];
-  
-      let forecastHTML = '<div class="card card--strip bg--primary"><h3>7-Day Forecast</h3><ul>';
-      for (let i = 0; i < 7; i++) {
-        const date = forecast.time[i];
-        const minTemp = forecast.temperature_2m_min[i];
-        const maxTemp = forecast.temperature_2m_max[i];
-        const icon = weatherIcons[forecast.weathercode[i]] || '❓';
-        const dayName = formatDateToDay(date);
-        forecastHTML += `
-          <li>
-            <p>${dayName}</p>
-            <img src="${icon}" alt="Weather icon" />
-            <p><strong>${maxTemp}</strong>/${minTemp}</p>
-          </li>`;
-      }
-      forecastHTML += '</ul></div>';
 
-      let hourlyHTML = '<div class="card card--grid card--grid-alt bg--primary"><h3>24-Hour Forecast</h3><ul class="card__content card__content--alt">';
-      const hourlyData = weatherData.hourly;
-
-      for (let i = 0; i < 6; i++) {
-        const time = hourlyData.time[i];
-        const temperature = hourlyData.temperature_2m[i];
-        const iconCode = hourlyData.weathercode[i];
-        const icon = weatherIcons[iconCode] || '❓';
-
-        hourlyHTML += `
-          <li>
-            <p>${time.split('T')[1]}</p>
-            <img src="${icon}" alt="Weather icon" />
-            <p>${temperature}°</p>
-          </li>`;
-      }
-      hourlyHTML += '</ul></div>';
+      const forecastHTML = createForecastHTML(forecast, weatherIcons);
+      const hourlyHTML = createHourlyHTML(weatherData, weatherIcons);
 
       weatherInfo.innerHTML = `
         <div class="cards-holder">
@@ -193,6 +89,8 @@ export default function initSearch () {
     } catch (error) {
       console.error("Error displaying weather data:", error);
       alert("Unable to display weather data.");
+    } finally {
+      hideLoader(); // Hide loader after data fetching
     }
   }
   

@@ -16,6 +16,11 @@ body {
   min-width: 320px;
   margin: 0;
   padding: 0;
+
+  &.nav-active,
+  &.loader-visible {
+    overflow-y: hidden;
+  }
 }
 
 button, 

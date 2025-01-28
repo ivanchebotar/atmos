@@ -5,6 +5,7 @@
   background-color: $grey-01;
   padding: rem(20px) rem(10px);
   border-radius: rem(10px);
+  min-height: calc(100vh - rem(20px));
   
   @include media(">=tablet") {
     width: calc(100% - rem(100px));
@@ -20,13 +21,10 @@
 
 
 section {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: opacity 0.1s ease, transform 0.3s ease;
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  display: none;
   
   @include media(">=tablet") {
     position: absolute;
@@ -37,7 +35,5 @@ section {
 }
 
 section.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  display: block;
 }
